@@ -1,5 +1,5 @@
 form {
-
+  min-width: 300px;
   padding: 2em;
   width: 40%;
   margin: 0 auto;
@@ -26,6 +26,7 @@ p {
 }
 
 .weather-card {
+  min-width: 300px;
   background-color: pink;
   width: 40%;
   padding: 2em;
