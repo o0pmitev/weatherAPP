@@ -27,21 +27,20 @@ form.addEventListener('submit', function() {
     } else if( temp > 30) {
       backgroundColor = 'yellow';
     } else if(temp > 20) {
-      backgroundColor = 'deepskyblue'
+      backgroundColor = 'deepskyblue';
     } else if(temp > 10) {
-      backgroundColor = 'purple'
-    } else if (temp === 0) {
-      backgroundColor = 'grey'
-    } else if (temp < 0) {
-      backgroundColor = 'white'
+      backgroundColor = 'purple';
+    } else if (temp > 0) {
+      backgroundColor = 'grey';
+    } else {
+      backgroundColor = 'white';
     }
     
-    console.log(backgroundColor)
     let weatherCard = 
     ` 
     <div class="weather-card">     
     <p class="city-name">${city}</p>
-    <p>${temp} &#176C</p>
+    <p>${temp} &#176C;</p>
     <p>${weatherDescription}<img src="${icon}"></p>
     </div>
     `;
@@ -50,8 +49,6 @@ form.addEventListener('submit', function() {
 
     const weatherCardBackground  = document.querySelector('.weather-card');
     weatherCardBackground.style.backgroundColor = backgroundColor;
-
-    console.log(data.weather[0].icon);
 
   })
 });
