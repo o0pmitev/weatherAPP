@@ -11,37 +11,38 @@ form.addEventListener('submit', function () {
   let city = input.value;
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`
   async function getData() {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
 
-    const response = await fetch(url);
-    const data = await response.json();
+      const convertWeatherData = await
 
-    const convertWeatherData = await
-    function () {
+      function () {
 
-      let temp = Math.round(data.main.temp - 273);
-      let weatherDescription = data.weather[0].description;
-      let icon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-      let backgroundColor;
+        let temp = Math.round(data.main.temp - 273);
+        let weatherDescription = data.weather[0].description;
+        let icon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+        let backgroundColor;
 
-      // Pick color for the background
-      if (temp > 40) {
-        backgroundColor = 'red';
-      } else if (temp > 35) {
-        backgroundColor = 'orange';
-      } else if (temp > 30) {
-        backgroundColor = 'yellow';
-      } else if (temp > 20) {
-        backgroundColor = 'deepskyblue';
-      } else if (temp > 10) {
-        backgroundColor = 'purple';
-      } else if (temp > 0) {
-        backgroundColor = 'grey';
-      } else {
-        backgroundColor = 'white';
-      }
+        // Pick color for the background
+        if (temp > 40) {
+          backgroundColor = 'red';
+        } else if (temp > 35) {
+          backgroundColor = 'orange';
+        } else if (temp > 30) {
+          backgroundColor = 'yellow';
+        } else if (temp > 20) {
+          backgroundColor = 'deepskyblue';
+        } else if (temp > 10) {
+          backgroundColor = 'purple';
+        } else if (temp > 0) {
+          backgroundColor = 'grey';
+        } else {
+          backgroundColor = 'white';
+        }
 
-      let weatherCard =
-        ` 
+        let weatherCard =
+          ` 
     <div class="weather-card">     
     <p class="city-name">${city}</p>
     <p>${temp} &#176;C</p>
@@ -49,13 +50,16 @@ form.addEventListener('submit', function () {
     </div>
     `;
 
-      weatherContainer.innerHTML = weatherCard;
+        weatherContainer.innerHTML = weatherCard;
 
-      const weatherCardBackground = document.querySelector('.weather-card');
-      weatherCardBackground.style.backgroundColor = backgroundColor;
+        const weatherCardBackground = document.querySelector('.weather-card');
+        weatherCardBackground.style.backgroundColor = backgroundColor;
 
+      }
+      convertWeatherData();
+    } catch (error) {
+      alert('Cant find city.Try again!');
     }
-    convertWeatherData();
   }
   getData();
 });
