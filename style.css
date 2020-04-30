@@ -34,5 +34,6 @@ p {
 }
 
 .city-name  {
+  text-transform: capitalize;
   text-align: center;
 }
