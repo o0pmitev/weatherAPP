@@ -40,7 +40,7 @@ form.addEventListener('submit', function() {
     ` 
     <div class="weather-card">     
     <p class="city-name">${city}</p>
-    <p>${temp} &#176C;</p>
+    <p>${temp} &#176;C</p>
     <p>${weatherDescription}<img src="${icon}"></p>
     </div>
     `;
